@@ -216,14 +216,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        self.text_header.setText(_translate("MainWindow", "HỆ THỐNG NHẬN DIỆN BIỂN SỐ XE VÀO/RA"))
+        self.text_header.setText(_translate("MainWindow", "HỆ THỐNG QUẢN LÍ BÃI ĐỖ XE"))
         self.label_plate_in.setText(_translate("MainWindow", "Không nhận thấy"))
         self.label_digits_in.setText(_translate("MainWindow", "Không nhận diện được"))
         self.label_time_in.setText(_translate("MainWindow", "Chưa có dữ liệu"))
         self.label_status_in.setText(_translate("MainWindow", "Đang xử lý..."))
-        self.label_in.setText(_translate("MainWindow", "Chưa có thông tin barrier (vào)"))
+        self.label_in.setText(_translate("MainWindow", "Chưa có thông tin barrier"))
         self.label_plate_out.setText(_translate("MainWindow", "Không nhận thấy"))
         self.label_digits_out.setText(_translate("MainWindow", "Không nhận diện được"))
         self.label_time_out.setText(_translate("MainWindow", "Chưa có dữ liệu"))
         self.label_status_out.setText(_translate("MainWindow", "Đang xử lý..."))
-        self.label_out.setText(_translate("MainWindow", "Chưa có thông tin barrier (ra)"))
+        self.label_out.setText(_translate("MainWindow", "Chưa có thông tin "))
