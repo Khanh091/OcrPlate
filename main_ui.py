@@ -1,3 +1,4 @@
+# main_ui.py
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -46,7 +47,6 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        # ==== Tiêu đề ====
         self.text_header = QtWidgets.QLabel(self.centralwidget)
         self.text_header.setGeometry(QtCore.QRect(500, 10, 900, 60))
         font = QtGui.QFont("Segoe UI", 26, QtGui.QFont.Bold)
@@ -54,7 +54,6 @@ class Ui_MainWindow(object):
         self.text_header.setAlignment(QtCore.Qt.AlignCenter)
         self.text_header.setObjectName("text_header")
 
-        # ==== Khung camera vào ====
         self.label_main_in = QtWidgets.QLabel(self.centralwidget)
         self.label_main_in.setGeometry(QtCore.QRect(30, 90, 500, 375))
         self.label_main_in.setStyleSheet("border: 2px solid #333; background-color: #000;")
@@ -62,7 +61,6 @@ class Ui_MainWindow(object):
         self.label_main_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_main_in.setObjectName("label_main_in")
 
-        # ==== Khung camera ra ====
         self.label_main_out = QtWidgets.QLabel(self.centralwidget)
         self.label_main_out.setGeometry(QtCore.QRect(990, 90, 500, 375))
         self.label_main_out.setStyleSheet("border: 2px solid #333; background-color: #000;")
@@ -70,7 +68,6 @@ class Ui_MainWindow(object):
         self.label_main_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_main_out.setObjectName("label_main_out")
 
-        # ==== Nhóm hiển thị kết quả vào ====
         self.label_plate_in = QtWidgets.QLabel(self.centralwidget)
         self.label_plate_in.setGeometry(QtCore.QRect(670, 100, 280, 100))
         font = QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold)
@@ -86,7 +83,7 @@ class Ui_MainWindow(object):
 
         self.label_time_in = QtWidgets.QLabel(self.centralwidget)
         self.label_time_in.setGeometry(QtCore.QRect(670, 290, 280, 70))
-        self.label_time_in.setFont(QtGui.QFont("Segoe UI", 16))
+        self.label_time_in.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_time_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_time_in.setObjectName("label_time_in")
 
@@ -97,7 +94,6 @@ class Ui_MainWindow(object):
         self.label_status_in.setWordWrap(True)
         self.label_status_in.setObjectName("label_status_in")
 
-        # ==== Nhóm hiển thị kết quả ra ====
         self.label_plate_out = QtWidgets.QLabel(self.centralwidget)
         self.label_plate_out.setGeometry(QtCore.QRect(1630, 100, 280, 100))
         font = QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold)
@@ -113,7 +109,7 @@ class Ui_MainWindow(object):
 
         self.label_time_out = QtWidgets.QLabel(self.centralwidget)
         self.label_time_out.setGeometry(QtCore.QRect(1630, 290, 280, 70))
-        self.label_time_out.setFont(QtGui.QFont("Segoe UI", 16))
+        self.label_time_out.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_time_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_time_out.setObjectName("label_time_out")
 
@@ -124,7 +120,6 @@ class Ui_MainWindow(object):
         self.label_status_out.setWordWrap(True)
         self.label_status_out.setObjectName("label_status_out")
 
-        # ==== Trạng thái barrier vào (thay ảnh lúc vào) ====
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(50, 490, 220, 40))
         self.label_6.setFont(QtGui.QFont("Segoe UI", 15))
@@ -139,14 +134,12 @@ class Ui_MainWindow(object):
         self.label_in.setWordWrap(True)
         self.label_in.setObjectName("label_in")
 
-        # nút force open vào (dưới label_in)
         self.btn_force_open_in = QtWidgets.QPushButton(self.centralwidget)
         self.btn_force_open_in.setGeometry(QtCore.QRect(190, 640, 200, 44))
         self.btn_force_open_in.setFont(QtGui.QFont("Segoe UI", 14, QtGui.QFont.Bold))
         self.btn_force_open_in.setObjectName("btn_force_open_in")
         self.btn_force_open_in.setText("Mở barrier")
 
-        # ==== Trạng thái barrier ra (thay ảnh lúc ra) ====
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(1010, 490, 220, 40))
         self.label_7.setFont(QtGui.QFont("Segoe UI", 15))
@@ -161,14 +154,12 @@ class Ui_MainWindow(object):
         self.label_out.setWordWrap(True)
         self.label_out.setObjectName("label_out")
 
-        # nút force open ra (dưới label_out)
         self.btn_force_open_out = QtWidgets.QPushButton(self.centralwidget)
         self.btn_force_open_out.setGeometry(QtCore.QRect(1140, 640, 200, 44))
         self.btn_force_open_out.setFont(QtGui.QFont("Segoe UI", 14, QtGui.QFont.Bold))
         self.btn_force_open_out.setObjectName("btn_force_open_out")
         self.btn_force_open_out.setText("Mở barrier")
 
-        # ==== Nhãn phụ vào (giảm font để tiết chỗ) ====
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(540, 130, 120, 40))
         self.label.setFont(QtGui.QFont("Segoe UI", 12))
@@ -193,7 +184,6 @@ class Ui_MainWindow(object):
         self.label_5.setStyleSheet("background-color: none; border: none; color: #333;")
         self.label_5.setText("Trạng thái")
 
-        # ==== Nhãn phụ ra (giảm font) ====
         self.label_out_text = QtWidgets.QLabel(self.centralwidget)
         self.label_out_text.setGeometry(QtCore.QRect(1500, 130, 120, 40))
         self.label_out_text.setFont(QtGui.QFont("Segoe UI", 12))
@@ -218,7 +208,6 @@ class Ui_MainWindow(object):
         self.label_5_out.setStyleSheet("background-color: none; border: none; color: #333;")
         self.label_5_out.setText("Trạng thái")
 
-        # ==== Cấu hình cửa sổ ====
         MainWindow.setCentralWidget(self.centralwidget)
         MainWindow.setWindowTitle("Hệ thống nhận diện biển số")
 
