@@ -22,8 +22,8 @@ class Ui_MainWindow(object):
                 border-radius: 15px;
                 padding: 10px;
             }
-            QLabel#label_digits_in, QLabel#label_plate_in, QLabel#label_time_in, QLabel#label_status_in,
-            QLabel#label_digits_out, QLabel#label_plate_out, QLabel#label_time_out, QLabel#label_status_out {
+            QLabel#label_digits_in, QLabel#label_plate_in, QLabel#label_time_in, QLabel#label_time_out_in, QLabel#label_status_in,
+            QLabel#label_digits_out, QLabel#label_plate_out, QLabel#label_time_in_out, QLabel#label_time_out_out, QLabel#label_status_out {
                 border: 2px solid #2f74c0;
                 color: #1c1c1c;
                 background-color: #f8faff;
@@ -46,6 +46,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
+        # Header
         self.text_header = QtWidgets.QLabel(self.centralwidget)
         self.text_header.setGeometry(QtCore.QRect(500, 10, 900, 60))
         font = QtGui.QFont("Segoe UI", 26, QtGui.QFont.Bold)
@@ -53,6 +54,7 @@ class Ui_MainWindow(object):
         self.text_header.setAlignment(QtCore.Qt.AlignCenter)
         self.text_header.setObjectName("text_header")
 
+        # Camera view left / right
         self.label_main_in = QtWidgets.QLabel(self.centralwidget)
         self.label_main_in.setGeometry(QtCore.QRect(30, 90, 500, 375))
         self.label_main_in.setStyleSheet("border: 2px solid #333; background-color: #000;")
@@ -67,6 +69,7 @@ class Ui_MainWindow(object):
         self.label_main_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_main_out.setObjectName("label_main_out")
 
+        # ===== Left group (camera vào) =====
         self.label_plate_in = QtWidgets.QLabel(self.centralwidget)
         self.label_plate_in.setGeometry(QtCore.QRect(670, 100, 280, 100))
         self.label_plate_in.setFont(QtGui.QFont("Segoe UI", 12))
@@ -79,11 +82,18 @@ class Ui_MainWindow(object):
         self.label_digits_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_digits_in.setObjectName("label_digits_in")
 
+        # Thời gian: vào (trên) / ra (dưới) — hai ô tách biệt, đủ chiều cao để không bị cắt
         self.label_time_in = QtWidgets.QLabel(self.centralwidget)
-        self.label_time_in.setGeometry(QtCore.QRect(670, 290, 280, 70))
-        self.label_time_in.setFont(QtGui.QFont("Segoe UI", 12))
+        self.label_time_in.setGeometry(QtCore.QRect(670, 285, 280, 36))
+        self.label_time_in.setFont(QtGui.QFont("Segoe UI", 11))
         self.label_time_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_time_in.setObjectName("label_time_in")
+
+        self.label_time_out_in = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_out_in.setGeometry(QtCore.QRect(670, 325, 280, 36))
+        self.label_time_out_in.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_out_in.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_time_out_in.setObjectName("label_time_out_in")
 
         self.label_status_in = QtWidgets.QLabel(self.centralwidget)
         self.label_status_in.setGeometry(QtCore.QRect(670, 370, 280, 70))
@@ -92,6 +102,7 @@ class Ui_MainWindow(object):
         self.label_status_in.setWordWrap(True)
         self.label_status_in.setObjectName("label_status_in")
 
+        # ===== Right group (camera ra) =====
         self.label_plate_out = QtWidgets.QLabel(self.centralwidget)
         self.label_plate_out.setGeometry(QtCore.QRect(1630, 100, 280, 100))
         self.label_plate_out.setFont(QtGui.QFont("Segoe UI", 12))
@@ -104,11 +115,18 @@ class Ui_MainWindow(object):
         self.label_digits_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_digits_out.setObjectName("label_digits_out")
 
-        self.label_time_out = QtWidgets.QLabel(self.centralwidget)
-        self.label_time_out.setGeometry(QtCore.QRect(1630, 290, 280, 70))
-        self.label_time_out.setFont(QtGui.QFont("Segoe UI", 12))
-        self.label_time_out.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_time_out.setObjectName("label_time_out")
+        # Thời gian phải tương ứng: vào (trên) / ra (dưới)
+        self.label_time_in_out = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_in_out.setGeometry(QtCore.QRect(1630, 285, 280, 36))
+        self.label_time_in_out.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_in_out.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_time_in_out.setObjectName("label_time_in_out")
+
+        self.label_time_out_out = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_out_out.setGeometry(QtCore.QRect(1630, 325, 280, 36))
+        self.label_time_out_out.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_out_out.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_time_out_out.setObjectName("label_time_out_out")
 
         self.label_status_out = QtWidgets.QLabel(self.centralwidget)
         self.label_status_out.setGeometry(QtCore.QRect(1630, 370, 280, 70))
@@ -117,6 +135,7 @@ class Ui_MainWindow(object):
         self.label_status_out.setWordWrap(True)
         self.label_status_out.setObjectName("label_status_out")
 
+        # ===== Barrier status blocks =====
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(50, 490, 220, 40))
         self.label_6.setFont(QtGui.QFont("Segoe UI", 15))
@@ -157,6 +176,7 @@ class Ui_MainWindow(object):
         self.btn_force_open_out.setObjectName("btn_force_open_out")
         self.btn_force_open_out.setText("Mở barrier")
 
+        # ===== Helper labels (left) =====
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(540, 130, 120, 40))
         self.label.setFont(QtGui.QFont("Segoe UI", 12))
@@ -169,11 +189,18 @@ class Ui_MainWindow(object):
         self.label_2.setStyleSheet("background-color: none; border: none; color: #333;")
         self.label_2.setText("Đọc được")
 
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(540, 300, 120, 40))
-        self.label_3.setFont(QtGui.QFont("Segoe UI", 12))
-        self.label_3.setStyleSheet("background-color: none; border: none; color: #333;")
-        self.label_3.setText("Thời gian")
+        # Header texts for time (left)
+        self.label_time_header_in = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_header_in.setGeometry(QtCore.QRect(540, 285, 120, 36))
+        self.label_time_header_in.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_header_in.setStyleSheet("background-color: none; border: none; color: #333;")
+        self.label_time_header_in.setText("Thời gian vào")
+
+        self.label_time_header_out = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_header_out.setGeometry(QtCore.QRect(540, 325, 120, 36))
+        self.label_time_header_out.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_header_out.setStyleSheet("background-color: none; border: none; color: #333;")
+        self.label_time_header_out.setText("Thời gian ra")
 
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(540, 380, 120, 40))
@@ -181,6 +208,7 @@ class Ui_MainWindow(object):
         self.label_5.setStyleSheet("background-color: none; border: none; color: #333;")
         self.label_5.setText("Trạng thái")
 
+        # Header texts for time (right)
         self.label_out_text = QtWidgets.QLabel(self.centralwidget)
         self.label_out_text.setGeometry(QtCore.QRect(1500, 130, 120, 40))
         self.label_out_text.setFont(QtGui.QFont("Segoe UI", 12))
@@ -193,11 +221,17 @@ class Ui_MainWindow(object):
         self.label_2_out.setStyleSheet("background-color: none; border: none; color: #333;")
         self.label_2_out.setText("Đọc được")
 
-        self.label_3_out = QtWidgets.QLabel(self.centralwidget)
-        self.label_3_out.setGeometry(QtCore.QRect(1500, 300, 120, 40))
-        self.label_3_out.setFont(QtGui.QFont("Segoe UI", 12))
-        self.label_3_out.setStyleSheet("background-color: none; border: none; color: #333;")
-        self.label_3_out.setText("Thời gian")
+        self.label_time_header_in_out = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_header_in_out.setGeometry(QtCore.QRect(1500, 285, 120, 36))
+        self.label_time_header_in_out.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_header_in_out.setStyleSheet("background-color: none; border: none; color: #333;")
+        self.label_time_header_in_out.setText("Thời gian vào")
+
+        self.label_time_header_out_out = QtWidgets.QLabel(self.centralwidget)
+        self.label_time_header_out_out.setGeometry(QtCore.QRect(1500, 325, 120, 36))
+        self.label_time_header_out_out.setFont(QtGui.QFont("Segoe UI", 11))
+        self.label_time_header_out_out.setStyleSheet("background-color: none; border: none; color: #333;")
+        self.label_time_header_out_out.setText("Thời gian ra")
 
         self.label_5_out = QtWidgets.QLabel(self.centralwidget)
         self.label_5_out.setGeometry(QtCore.QRect(1500, 380, 120, 40))
@@ -217,10 +251,12 @@ class Ui_MainWindow(object):
         self.label_plate_in.setText(_translate("MainWindow", "Không nhận thấy"))
         self.label_digits_in.setText(_translate("MainWindow", "Không nhận diện được"))
         self.label_time_in.setText(_translate("MainWindow", "Chưa có dữ liệu"))
+        self.label_time_out_in.setText(_translate("MainWindow", "Chưa có dữ liệu"))
         self.label_status_in.setText(_translate("MainWindow", "Đang xử lý..."))
         self.label_in.setText(_translate("MainWindow", "Chưa có thông tin"))
         self.label_plate_out.setText(_translate("MainWindow", "Không nhận thấy"))
         self.label_digits_out.setText(_translate("MainWindow", "Không nhận diện được"))
-        self.label_time_out.setText(_translate("MainWindow", "Chưa có dữ liệu"))
+        self.label_time_in_out.setText(_translate("MainWindow", "Chưa có dữ liệu"))
+        self.label_time_out_out.setText(_translate("MainWindow", "Chưa có dữ liệu"))
         self.label_status_out.setText(_translate("MainWindow", "Đang xử lý..."))
         self.label_out.setText(_translate("MainWindow", "Chưa có thông tin "))

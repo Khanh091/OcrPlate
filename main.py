@@ -62,7 +62,7 @@ class Main(Ui_MainWindow):
         except Exception as e:
             print("❌ Lỗi kết nối MongoDB:", e)
 
-        self.cap_in = cv2.VideoCapture(1)
+        self.cap_in = cv2.VideoCapture(0)
         if not self.cap_in.isOpened():
             print("❌ Không thể mở camera vào")
             return
@@ -255,7 +255,8 @@ class Main(Ui_MainWindow):
                         QPixmap.fromImage(frame_plate).scaled(self.label_plate_in.size())
                     )
 
-                vehicle = self.collection.find_one({"plate": digits})
+                # Lấy bản ghi gần nhất theo time_in (gần đây nhất)
+                vehicle = self.collection.find_one({"plate": digits}, sort=[("time_in", -1)])
                 if vehicle:
                     status = vehicle.get("status", "Không rõ")
                     time_in = vehicle.get("time_in")
@@ -267,14 +268,14 @@ class Main(Ui_MainWindow):
                         try:
                             if isinstance(time_in, dict) and "$date" in time_in:
                                 time_in_value = int(time_in["$date"]["$numberLong"]) / 1000
-                                dt = datetime.utcfromtimestamp(time_in_value) + timedelta(hours=7)
-                                time_in_str = dt.strftime("%H:%M:%S %d-%m-%Y")
+                                dt_in = datetime.utcfromtimestamp(time_in_value) + timedelta(hours=7)
+                                time_in_str = dt_in.strftime("%H:%M:%S %d-%m-%Y")
                             elif isinstance(time_in, (int, float)):
-                                dt = datetime.utcfromtimestamp(float(time_in)) + timedelta(hours=7)
-                                time_in_str = dt.strftime("%H:%M:%S %d-%m-%Y")
+                                dt_in = datetime.utcfromtimestamp(float(time_in)) + timedelta(hours=7)
+                                time_in_str = dt_in.strftime("%H:%M:%S %d-%m-%Y")
                             elif isinstance(time_in, datetime):
-                                dt = time_in + timedelta(hours=7)
-                                time_in_str = dt.strftime("%H:%M:%S %d-%m-%Y")
+                                dt_in = time_in + timedelta(hours=7)
+                                time_in_str = dt_in.strftime("%H:%M:%S %d-%m-%Y")
                             else:
                                 time_in_str = str(time_in)
                             self.label_time_in.setText(time_in_str)
@@ -282,9 +283,30 @@ class Main(Ui_MainWindow):
                             self.label_time_in.setText("Lỗi thời gian")
                     else:
                         self.label_time_in.setText("Chưa vào")
+
+                    if time_out:
+                        try:
+                            if isinstance(time_out, dict) and "$date" in time_out:
+                                time_out_value = int(time_out["$date"]["$numberLong"]) / 1000
+                                dt_out = datetime.utcfromtimestamp(time_out_value) + timedelta(hours=7)
+                                time_out_str = dt_out.strftime("%H:%M:%S %d-%m-%Y")
+                            elif isinstance(time_out, (int, float)):
+                                dt_out = datetime.utcfromtimestamp(float(time_out)) + timedelta(hours=7)
+                                time_out_str = dt_out.strftime("%H:%M:%S %d-%m-%Y")
+                            elif isinstance(time_out, datetime):
+                                dt_out = time_out + timedelta(hours=7)
+                                time_out_str = dt_out.strftime("%H:%M:%S %d-%m-%Y")
+                            else:
+                                time_out_str = str(time_out)
+                            self.label_time_out_in.setText(time_out_str)
+                        except Exception:
+                            self.label_time_out_in.setText("Lỗi thời gian")
+                    else:
+                        self.label_time_out_in.setText("Chưa ra")
                 else:
                     self.label_status_in.setText("Xe chưa vào bãi")
                     self.label_time_in.setText("Không có thời gian")
+                    self.label_time_out_in.setText("Không có thời gian")
 
                 self.label_digits_in.setText(f'{str(digits)}')
 
@@ -295,6 +317,7 @@ class Main(Ui_MainWindow):
                 self.label_plate_in.setText('Không nhận thấy')
                 self.label_digits_in.setText('Không nhận diện được')
                 self.label_time_in.setText('Không nhận dạng được')
+                self.label_time_out_in.setText('Không nhận dạng được')
                 self.label_status_in.setText('Không nhận dạng được')
 
             self.label_main_in.setPixmap(
@@ -355,7 +378,7 @@ class Main(Ui_MainWindow):
                         QPixmap.fromImage(frame_plate).scaled(self.label_plate_out.size())
                     )
 
-                vehicle = self.collection.find_one({"plate": digits})
+                vehicle = self.collection.find_one({"plate": digits}, sort=[("time_in", -1)])
                 if vehicle:
                     status = vehicle.get("status", "Không rõ")
                     time_in = vehicle.get("time_in")
@@ -363,28 +386,49 @@ class Main(Ui_MainWindow):
 
                     self.label_status_out.setText(status)
 
+                    if time_in:
+                        try:
+                            if isinstance(time_in, dict) and "$date" in time_in:
+                                time_in_value = int(time_in["$date"]["$numberLong"]) / 1000
+                                dt_in = datetime.utcfromtimestamp(time_in_value) + timedelta(hours=7)
+                                time_in_str = dt_in.strftime("%H:%M:%S %d-%m-%Y")
+                            elif isinstance(time_in, (int, float)):
+                                dt_in = datetime.utcfromtimestamp(float(time_in)) + timedelta(hours=7)
+                                time_in_str = dt_in.strftime("%H:%M:%S %d-%m-%Y")
+                            elif isinstance(time_in, datetime):
+                                dt_in = time_in + timedelta(hours=7)
+                                time_in_str = dt_in.strftime("%H:%M:%S %d-%m-%Y")
+                            else:
+                                time_in_str = str(time_in)
+                            self.label_time_in_out.setText(time_in_str)
+                        except Exception:
+                            self.label_time_in_out.setText("Lỗi thời gian")
+                    else:
+                        self.label_time_in_out.setText("Chưa vào")
+
                     if time_out:
                         try:
                             if isinstance(time_out, dict) and "$date" in time_out:
                                 time_out_value = int(time_out["$date"]["$numberLong"]) / 1000
-                                dt = datetime.utcfromtimestamp(time_out_value) + timedelta(hours=7)
-                                time_out_str = dt.strftime("%H:%M:%S %d-%m-%Y")
+                                dt_out = datetime.utcfromtimestamp(time_out_value) + timedelta(hours=7)
+                                time_out_str = dt_out.strftime("%H:%M:%S %d-%m-%Y")
                             elif isinstance(time_out, (int, float)):
-                                dt = datetime.utcfromtimestamp(float(time_out)) + timedelta(hours=7)
-                                time_out_str = dt.strftime("%H:%M:%S %d-%m-%Y")
+                                dt_out = datetime.utcfromtimestamp(float(time_out)) + timedelta(hours=7)
+                                time_out_str = dt_out.strftime("%H:%M:%S %d-%m-%Y")
                             elif isinstance(time_out, datetime):
-                                dt = time_out + timedelta(hours=7)
-                                time_out_str = dt.strftime("%H:%M:%S %d-%m-%Y")
+                                dt_out = time_out + timedelta(hours=7)
+                                time_out_str = dt_out.strftime("%H:%M:%S %d-%m-%Y")
                             else:
                                 time_out_str = str(time_out)
-                            self.label_time_out.setText(time_out_str)
+                            self.label_time_out_out.setText(time_out_str)
                         except Exception:
-                            self.label_time_out.setText("Lỗi thời gian")
+                            self.label_time_out_out.setText("Lỗi thời gian")
                     else:
-                        self.label_time_out.setText("Chưa ra")
+                        self.label_time_out_out.setText("Chưa ra")
                 else:
                     self.label_status_out.setText("Xe chưa vào bãi")
-                    self.label_time_out.setText("Không có thời gian")
+                    self.label_time_in_out.setText("Không có thời gian")
+                    self.label_time_out_out.setText("Không có thời gian")
 
                 self.label_digits_out.setText(f'{str(digits)}')
 
@@ -394,7 +438,8 @@ class Main(Ui_MainWindow):
 
                 self.label_plate_out.setText('Không nhận thấy')
                 self.label_digits_out.setText('Không nhận diện được')
-                self.label_time_out.setText('Không nhận dạng được')
+                self.label_time_in_out.setText('Không nhận dạng được')
+                self.label_time_out_out.setText('Không nhận dạng được')
                 self.label_status_out.setText('Không nhận dạng được')
 
             self.label_main_out.setPixmap(
