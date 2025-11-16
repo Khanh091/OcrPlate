@@ -192,7 +192,7 @@ class Main(Ui_MainWindow):
                 self.label_in.setText("Bãi đỗ hết chỗ")
                 self.label_in.setStyleSheet("border: 2px solid #f44336; background-color: #fdecea;")
             else:
-                self.label_in.setText("Chưa có thông tin barrier (vào)")
+                self.label_in.setText("Chưa có thông tin")
                 self.label_in.setStyleSheet("border: 2px solid #555; background-color: #eee;")
 
             if self.topic_barrier_out_open:
@@ -202,7 +202,7 @@ class Main(Ui_MainWindow):
                 self.label_out.setText("Thông tin thẻ và xe không hợp lệ")
                 self.label_out.setStyleSheet("border: 2px solid #f44336; background-color: #fdecea;")
             else:
-                self.label_out.setText("Thông tin thẻ và xe không hợp lệ")
+                self.label_out.setText("Chưa có thông tin")
                 self.label_out.setStyleSheet("border: 2px solid #555; background-color: #eee;")
         except Exception as e:
             print("⚠️ Lỗi khi cập nhật label barrier:", e)

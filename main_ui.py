@@ -25,7 +25,6 @@ class Ui_MainWindow(object):
             QLabel#label_digits_in, QLabel#label_plate_in, QLabel#label_time_in, QLabel#label_status_in,
             QLabel#label_digits_out, QLabel#label_plate_out, QLabel#label_time_out, QLabel#label_status_out {
                 border: 2px solid #2f74c0;
-                font-weight: bold;
                 color: #1c1c1c;
                 background-color: #f8faff;
             }
@@ -70,14 +69,13 @@ class Ui_MainWindow(object):
 
         self.label_plate_in = QtWidgets.QLabel(self.centralwidget)
         self.label_plate_in.setGeometry(QtCore.QRect(670, 100, 280, 100))
-        font = QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold)
-        self.label_plate_in.setFont(font)
+        self.label_plate_in.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_plate_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_plate_in.setObjectName("label_plate_in")
 
         self.label_digits_in = QtWidgets.QLabel(self.centralwidget)
         self.label_digits_in.setGeometry(QtCore.QRect(670, 210, 280, 70))
-        self.label_digits_in.setFont(QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold))
+        self.label_digits_in.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_digits_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_digits_in.setObjectName("label_digits_in")
 
@@ -89,21 +87,20 @@ class Ui_MainWindow(object):
 
         self.label_status_in = QtWidgets.QLabel(self.centralwidget)
         self.label_status_in.setGeometry(QtCore.QRect(670, 370, 280, 70))
-        self.label_status_in.setFont(QtGui.QFont("Segoe UI", 18, QtGui.QFont.Bold))
+        self.label_status_in.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_status_in.setAlignment(QtCore.Qt.AlignCenter)
         self.label_status_in.setWordWrap(True)
         self.label_status_in.setObjectName("label_status_in")
 
         self.label_plate_out = QtWidgets.QLabel(self.centralwidget)
         self.label_plate_out.setGeometry(QtCore.QRect(1630, 100, 280, 100))
-        font = QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold)
-        self.label_plate_out.setFont(font)
+        self.label_plate_out.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_plate_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_plate_out.setObjectName("label_plate_out")
 
         self.label_digits_out = QtWidgets.QLabel(self.centralwidget)
         self.label_digits_out.setGeometry(QtCore.QRect(1630, 210, 280, 70))
-        self.label_digits_out.setFont(QtGui.QFont("Segoe UI", 20, QtGui.QFont.Bold))
+        self.label_digits_out.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_digits_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_digits_out.setObjectName("label_digits_out")
 
@@ -115,7 +112,7 @@ class Ui_MainWindow(object):
 
         self.label_status_out = QtWidgets.QLabel(self.centralwidget)
         self.label_status_out.setGeometry(QtCore.QRect(1630, 370, 280, 70))
-        self.label_status_out.setFont(QtGui.QFont("Segoe UI", 18, QtGui.QFont.Bold))
+        self.label_status_out.setFont(QtGui.QFont("Segoe UI", 12))
         self.label_status_out.setAlignment(QtCore.Qt.AlignCenter)
         self.label_status_out.setWordWrap(True)
         self.label_status_out.setObjectName("label_status_out")
@@ -221,7 +218,7 @@ class Ui_MainWindow(object):
         self.label_digits_in.setText(_translate("MainWindow", "Không nhận diện được"))
         self.label_time_in.setText(_translate("MainWindow", "Chưa có dữ liệu"))
         self.label_status_in.setText(_translate("MainWindow", "Đang xử lý..."))
-        self.label_in.setText(_translate("MainWindow", "Chưa có thông tin barrier"))
+        self.label_in.setText(_translate("MainWindow", "Chưa có thông tin"))
         self.label_plate_out.setText(_translate("MainWindow", "Không nhận thấy"))
         self.label_digits_out.setText(_translate("MainWindow", "Không nhận diện được"))
         self.label_time_out.setText(_translate("MainWindow", "Chưa có dữ liệu"))
