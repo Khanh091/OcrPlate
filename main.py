@@ -61,12 +61,12 @@ class Main(Ui_MainWindow):
         except Exception as e:
             print("❌ Lỗi kết nối MongoDB:", e)
 
-        self.cap_in = cv2.VideoCapture(0)
+        self.cap_in = cv2.VideoCapture(1)
         if not self.cap_in.isOpened():
             print("❌ Không thể mở camera vào")
             return
 
-        self.cap_out = cv2.VideoCapture(2)
+        self.cap_out = cv2.VideoCapture(4)
         if not self.cap_out.isOpened():
             print("❌ Không thể mở camera ra")
             return
