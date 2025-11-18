@@ -13,8 +13,8 @@ from pymongo import MongoClient
 from datetime import datetime, timedelta
 import ssl
 
-path_plate = 'model/best_plate.pt'
-path_ocr = 'model/best_ocr.pt'
+path_plate = 'model/best_platev8.pt'
+path_ocr = 'model/best_ocrv8.pt'
 
 MQTT_BROKER = "03f372a29a8046d58d638f16d1c4d459.s1.eu.hivemq.cloud"
 MQTT_PORT = 8883

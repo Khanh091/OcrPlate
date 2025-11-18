@@ -1,16 +1,24 @@
+# Ignore yolov5 repo (không đưa lên git)
+yolov5/
+
 # Ignore Jupyter notebooks
+*.ipynb
+
+# Ignore specific notebooks
 test_ocr.ipynb
-
-# Ignore Python bytecode files
-__pycache__/
-
-# Ignore log files
-*.log
-
-# Ignore temporary files
-*.tmp
-
 tempCodeRunnerFile.ipynb
 t.ipynb
 test.ipynb
-main_ui.ui 
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore logs
+*.log
+
+# Ignore temp files
+*.tmp
+
+# Ignore Qt Designer UI files
+main_ui.ui
