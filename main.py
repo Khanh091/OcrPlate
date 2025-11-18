@@ -5,7 +5,6 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 import cv2
 from OcrPlate import OcrPlate
-from check_and_save_img import CheckAndSaveImg
 import numpy as np
 import sys
 import paho.mqtt.client as mqtt
@@ -71,8 +70,6 @@ class Main(Ui_MainWindow):
         if not self.cap_out.isOpened():
             print("❌ Không thể mở camera ra")
             return
-
-        self.OJ = CheckAndSaveImg()
 
         self.ocr_plate_in = OcrPlate(
             path_model_detect_plate=path_plate,
